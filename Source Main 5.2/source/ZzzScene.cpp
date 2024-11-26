@@ -106,7 +106,7 @@ bool EnableEdit    = false;
 
 int g_iLengthAuthorityCode = 20;
 
-wchar_t* szServerIpAddress = L"127.127.127.127";
+wchar_t* szServerIpAddress = L"26.172.222.58";
 //char *szServerIpAddress = "210.181.89.215";
 WORD g_ServerPort = 44406;
 

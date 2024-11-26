@@ -277,17 +277,17 @@ CHARACTER* M31HuntingGround::CreateHuntingGroundMonster(int iType, int PosX, int
         PlayBuffer(SOUND_BC_EROHIM_ENTER);
     }
     break;
-    case MONSTER_PK_DARK_KNIGHT:
+     case MONSTER_CURSED_KNIGHT_BOSS:
     {
         pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
-        wcscpy(pCharacter->ID, L"저주받은 기사");
-        pCharacter->Skin = 1;	//. 기사
+        wcscpy(pCharacter->ID, L"Cursed Knight");
+        pCharacter->Class = CLASS_KNIGHT;
         pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_DRAGON_HELM;
         pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_DRAGON_ARMOR;
         pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_DRAGON_PANTS;
         pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_DRAGON_GLOVES;
         pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_DRAGON_BOOTS;
-        pCharacter->Weapon[0].Type = MODEL_SWORD_OF_DESTRUCTION;
+        pCharacter->Weapon[0].Type = MODEL_LIGHTING_SWORD;
         pCharacter->Weapon[1].Type = MODEL_DRAGON_SHIELD;
         int Level = 9;
         pCharacter->BodyPart[BODYPART_HELM].Level = Level;
@@ -297,11 +297,150 @@ CHARACTER* M31HuntingGround::CreateHuntingGroundMonster(int iType, int PosX, int
         pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
         pCharacter->PK = PVP_MURDERER2;
         SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_WIZARD_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Wizard");
+        pCharacter->Class = CLASS_WIZARD;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_LEGENDARY_HELM;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_LEGENDARY_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_LEGENDARY_PANTS;
+        pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_LEGENDARY_GLOVES;
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_LEGENDARY_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_LEGENDARY_STAFF;
+        pCharacter->Weapon[1].Type = MODEL_LEGENDARY_SHIELD;
+        int Level = 9;
+        pCharacter->BodyPart[BODYPART_HELM].Level = Level;
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+        pCharacter->BodyPart[BODYPART_GLOVES].Level = Level;
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_ELF_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Elf");
+        pCharacter->Class = CLASS_ELF;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_VINE_HELM;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_VINE_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_VINE_PANTS;
+        pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_VINE_GLOVES;
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_VINE_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_ARROWS;
+        pCharacter->Weapon[1].Type = MODEL_SILVER_BOW;
+        int Level = 9;
+        pCharacter->BodyPart[BODYPART_HELM].Level = Level;
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+        pCharacter->BodyPart[BODYPART_GLOVES].Level = Level;
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_LORD_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Lord");
+        pCharacter->Class = CLASS_DARK_LORD;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_LIGHT_PLATE_MASK;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_LIGHT_PLATE_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_LIGHT_PLATE_PANTS;
+        pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_LIGHT_PLATE_GLOVES;
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_LIGHT_PLATE_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_BATTLE_SCEPTER;
+
+        int Level = 9;
+        pCharacter->BodyPart[BODYPART_HELM].Level = Level;
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+        pCharacter->BodyPart[BODYPART_GLOVES].Level = Level;
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_GLADIATOR_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Gladiator");
+        pCharacter->Class = CLASS_DARK;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_BODY_HELM + 3;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_STORM_CROW_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_STORM_CROW_PANTS;
+        pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_STORM_CROW_GLOVES;
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_STORM_CROW_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_THUNDER_BLADE;
+
+        int Level = 9;
+
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+        pCharacter->BodyPart[BODYPART_GLOVES].Level = Level;
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_SUMMONER_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Summoner");
+        pCharacter->Class = CLASS_SUMMONER;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_MISTERY_HELM;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_MISTERY_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_MISTERY_PANTS;
+        pCharacter->BodyPart[BODYPART_GLOVES].Type = MODEL_MISTERY_GLOVES;
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_MISTERY_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_MISTERY_STICK;
+        pCharacter->Weapon[1].Type = MODEL_BOOK_OF_SAHAMUTT;
+        int Level = 9;
+        pCharacter->BodyPart[BODYPART_HELM].Level = Level;
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+        pCharacter->BodyPart[BODYPART_GLOVES].Level = Level;
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
+    }
+    break;
+    case MONSTER_CURSED_FIGHTER_BOSS:
+    {
+        pCharacter = CreateCharacter(Key, MODEL_PLAYER, PosX, PosY);
+        wcscpy(pCharacter->ID, L"Cursed Fighter");
+        pCharacter->Class = CLASS_RAGEFIGHTER;
+        pCharacter->BodyPart[BODYPART_HELM].Type = MODEL_SACRED_HELM;
+        pCharacter->BodyPart[BODYPART_ARMOR].Type = MODEL_SACRED_ARMOR;
+        pCharacter->BodyPart[BODYPART_PANTS].Type = MODEL_SACRED_PANTS;
+
+        pCharacter->BodyPart[BODYPART_BOOTS].Type = MODEL_SACRED_BOOTS;
+        pCharacter->Weapon[0].Type = MODEL_SACRED_GLOVE;
+        pCharacter->Weapon[1].Type = MODEL_SACRED_GLOVE;
+        int Level = 9;
+        pCharacter->BodyPart[BODYPART_HELM].Level = Level;
+        pCharacter->BodyPart[BODYPART_ARMOR].Level = Level;
+        pCharacter->BodyPart[BODYPART_PANTS].Level = Level;
+
+        pCharacter->BodyPart[BODYPART_BOOTS].Level = Level;
+        pCharacter->PK = PVP_MURDERER2;
+        SetCharacterScale(pCharacter);
+        pCharacter->Object.Scale = 1.0f;
     }
     break;
     }
     return pCharacter;
-}
+    }
 
 bool M31HuntingGround::MoveHuntingGroundMonsterVisual(OBJECT* pObject, BMD* pModel)
 {
