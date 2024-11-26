@@ -913,9 +913,12 @@ void CUIBaseWindow::SetTitle(const wchar_t* pszTitle)
         delete[] m_pszTitle;
     }
 
-    auto requiredLength = wcslen(pszTitle) + 2;
+    auto requiredLength = wcslen(pszTitle) + 1;
     m_pszTitle = new wchar_t[requiredLength];
-    wcsncpy(m_pszTitle, pszTitle, wcslen(pszTitle));
+    if (m_pszTitle == NULL) return;
+
+    wcsncpy(m_pszTitle, pszTitle, requiredLength - 1);
+    m_pszTitle[requiredLength - 1] = L'\0';
 }
 
 void CUIBaseWindow::DrawOutLine(int iPos_x, int iPos_y, int iWidth, int iHeight)
@@ -2170,15 +2173,15 @@ void CUIPhotoViewer::CopyPlayer()
     else	// 변신 상태
     {
         if (CompareItemEqual(&m_PhotoChar.BodyPart[BODYPART_HELM], &CharacterMachine->Equipment[EQUIPMENT_HELM],
-            MODEL_BODY_HELM + gCharacterManager.GetSkinModelIndex(Hero->Class)) == FALSE) bChangeArmor = TRUE;
+            MODEL_BODY_HELM + Hero->SkinIndex) == FALSE) bChangeArmor = TRUE;
         else if (CompareItemEqual(&m_PhotoChar.BodyPart[BODYPART_ARMOR], &CharacterMachine->Equipment[EQUIPMENT_ARMOR],
-            MODEL_BODY_ARMOR + gCharacterManager.GetSkinModelIndex(Hero->Class)) == FALSE) bChangeArmor = TRUE;
+            MODEL_BODY_ARMOR + Hero->SkinIndex) == FALSE) bChangeArmor = TRUE;
         else if (CompareItemEqual(&m_PhotoChar.BodyPart[BODYPART_PANTS], &CharacterMachine->Equipment[EQUIPMENT_PANTS],
-            MODEL_BODY_PANTS + gCharacterManager.GetSkinModelIndex(Hero->Class)) == FALSE) bChangeArmor = TRUE;
+            MODEL_BODY_PANTS + Hero->SkinIndex) == FALSE) bChangeArmor = TRUE;
         else if (CompareItemEqual(&m_PhotoChar.BodyPart[BODYPART_GLOVES], &CharacterMachine->Equipment[EQUIPMENT_GLOVES],
-            MODEL_BODY_GLOVES + gCharacterManager.GetSkinModelIndex(Hero->Class)) == FALSE) bChangeArmor = TRUE;
+            MODEL_BODY_GLOVES + Hero->SkinIndex) == FALSE) bChangeArmor = TRUE;
         else if (CompareItemEqual(&m_PhotoChar.BodyPart[BODYPART_BOOTS], &CharacterMachine->Equipment[EQUIPMENT_BOOTS],
-            MODEL_BODY_BOOTS + gCharacterManager.GetSkinModelIndex(Hero->Class)) == FALSE) bChangeArmor = TRUE;
+            MODEL_BODY_BOOTS + Hero->SkinIndex) == FALSE) bChangeArmor = TRUE;
 
         for (i = 0; i < 2; ++i)
         {
@@ -2230,17 +2233,17 @@ void CUIPhotoViewer::CopyPlayer()
         {
             DeleteCloth(&m_PhotoChar, NULL, NULL);
 
-            m_PhotoChar.BodyPart[BODYPART_HEAD].Type = MODEL_BODY_HELM + gCharacterManager.GetSkinModelIndex(Hero->Class);
+            m_PhotoChar.BodyPart[BODYPART_HEAD].Type = MODEL_BODY_HELM + Hero->SkinIndex;
             SetItemToPhoto(&m_PhotoChar.BodyPart[BODYPART_HELM], &CharacterMachine->Equipment[EQUIPMENT_HELM],
-                MODEL_BODY_HELM + gCharacterManager.GetSkinModelIndex(Hero->Class));
+                MODEL_BODY_HELM + Hero->SkinIndex);
             SetItemToPhoto(&m_PhotoChar.BodyPart[BODYPART_ARMOR], &CharacterMachine->Equipment[EQUIPMENT_ARMOR],
-                MODEL_BODY_ARMOR + gCharacterManager.GetSkinModelIndex(Hero->Class));
+                MODEL_BODY_ARMOR + Hero->SkinIndex);
             SetItemToPhoto(&m_PhotoChar.BodyPart[BODYPART_PANTS], &CharacterMachine->Equipment[EQUIPMENT_PANTS],
-                MODEL_BODY_PANTS + gCharacterManager.GetSkinModelIndex(Hero->Class));
+                MODEL_BODY_PANTS + Hero->SkinIndex);
             SetItemToPhoto(&m_PhotoChar.BodyPart[BODYPART_GLOVES], &CharacterMachine->Equipment[EQUIPMENT_GLOVES],
-                MODEL_BODY_GLOVES + gCharacterManager.GetSkinModelIndex(Hero->Class));
+                MODEL_BODY_GLOVES + Hero->SkinIndex);
             SetItemToPhoto(&m_PhotoChar.BodyPart[BODYPART_BOOTS], &CharacterMachine->Equipment[EQUIPMENT_BOOTS],
-                MODEL_BODY_BOOTS + gCharacterManager.GetSkinModelIndex(Hero->Class));
+                MODEL_BODY_BOOTS + Hero->SkinIndex);
 
             for (i = 0; i < MAX_BODYPART; ++i)
             {
